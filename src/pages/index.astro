@@ -1,50 +1,130 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Counter from "../components/Counter.svelte";
+import Layout from '../layouts/MainLayout/MainLayout.astro';
+import AttributeSwitcher from "../components/AttributeSwitcher.svelte";
+
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<center>
-			<h1 class="text-gradient">Welcome to my portfolio</h1>
-			<p>Look! A counter</p>
-			<Counter client:load />
-		</center>
+		<section id="hero">
+			<h1 class="text-gradient">David Anastasov</h1>
+			<AttributeSwitcher client:load />
+		</section>
+
+		<section id="about">
+			<div>
+				<p>
+					<strong>Software developer</strong>, specialized in developing web systems, equipped with many years
+					of experience.
+					Demonstrated ability to improve operations, increase revenue and reduce costs.
+				</p>
+				<p>
+					Proficient in React.JS with a focus on client-side and server-side rendered web applications.
+				</p>
+			</div>
+
+			<div class="tech-icons">
+				<img src="./images/react-icon.png" alt="React" />
+				<img src="./images/nodejs-icon.png" alt=".NET Core" />
+				<img src="./images/dotnetcore-icon.png" alt=".NET Core" />
+			</div>
+		</section>
+
+		<section id="projects">
+			Some of the projects i've worked on
+		</section>
+
+		<section id="contact">
+			<div>
+				<p>You want to contact me?</p>
+			</div>
+			<div>
+				<p>You can reach me on my email</p>
+				<a href="mailto:davidanastasov@hotmail.com">davidanastasov@hotmail.com</a>
+			</div>
+			<div>
+				<p>or you can use the contact form</p>
+				<form>
+					<div><label>Name and Surname<span>&thinsp;*
+							</span></label>
+						<input type="text" name="name" required value="">
+					</div>
+					<div><label>Вашата е-маил адреса<span>&thinsp;*</span></label>
+						<input type="text" name="email" required value="">
+					</div>
+					<div><label>Порака<span>&thinsp;*</span></label>
+						<textarea name="message" required rows="8" />
+					</div><button type="submit">Испрати</button>
+				</form>
+			</div>
+		</section>
 	</main>
 </Layout>
 
 <style lang="scss">
 	$astro-gradient: linear-gradient(0deg, #4F39FA, #DA62C4);
-
-	h1 {
-		margin: 2rem 0;
-	}
+	$section-padding: 2rem 8rem;
 
 	main {
 		margin: auto;
-		padding: 1em;
-		max-width: 60ch;
 	}
 
-	.text-gradient {
-		font-weight: 900;
-		background-image: $astro-gradient;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 100% 200%;
-		background-position-y: 100%;
-		border-radius: 0.4rem;
-		animation: pulse 4s ease-in-out infinite;
+	section {
+		padding: $section-padding;
+	}
 
-		@keyframes pulse {
+	#hero {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 
-			0%,
-			100% {
-				background-position-y: 0%;
+		background-image: url("./images/hero-background.jpg");
+		background-size: cover;
+		background-repeat: no-repeat;
+		min-height: 80vh;
+
+		h1 {
+			margin: 0;
+			font-weight: bold;
+		}
+
+		.text-gradient {
+			font-weight: 900;
+			background-image: $astro-gradient;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-size: 100% 200%;
+			background-position-y: 100%;
+			border-radius: 0.4rem;
+			animation: pulse 4s ease-in-out infinite;
+
+			@keyframes pulse {
+
+				0%,
+				100% {
+					background-position-y: 0%;
+				}
+
+				50% {
+					background-position-y: 80%;
+				}
 			}
+		}
+	}
 
-			50% {
-				background-position-y: 80%;
+	#about {
+		display: flex;
+		gap: 3rem;
+
+		.tech-icons {
+			display: flex;
+			gap: 2rem;
+			align-items: center;
+			justify-content: flex-end;
+
+			img {
+				height: 100px;
 			}
 		}
 	}

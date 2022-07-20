@@ -1,4 +1,8 @@
 ---
+import Conatainer from "./Conatainer.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+
 export interface Props {
   title: string;
 }
@@ -11,13 +15,21 @@ const { title } = Astro.props as Props;
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>{title}</title>
 </head>
 
 <body>
-  <slot />
+  <Header />
+
+  <Conatainer>
+    <slot />
+  </Conatainer>
+
+  <Footer />
 </body>
 
 </html>
